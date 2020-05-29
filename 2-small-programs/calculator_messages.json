@@ -23,7 +23,7 @@
     "goodbye": "Auf Wiedersehen!"
   },
   "3": {
-    "notValidNum": "Hmm ... ça ne ressemble pas à un nombre valide.",
+    "notValidNum": "Hmm... ça ne ressemble pas à un nombre valide.",
     "mustChoose": "Veuillez choisir 1, 2, 3 ou 4!",
     "welcome": "Bienvenue dans la calculatrice!",
     "askFirstNum": "Quel est le premier numéro?",

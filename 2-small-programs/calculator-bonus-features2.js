@@ -3,7 +3,7 @@ const MESSAGES = require('./calculator_messages.json');
 let LANGUAGE;
 
 // Get a message from JSON file, in selected language
-function messages(message, lang='english') {
+function messages(message, lang = 'english') {
   if (lang !== '1' && lang !== '2' && lang !== '3') {
     lang = '1';
   }
@@ -80,7 +80,7 @@ while (onOrOff) {
 
   // User input sets onOrOff to true or false
   while (anotherCalculation !== 'y' && anotherCalculation !== 'n') {
-    console.log('yesOrNo');
+    prompt('yesOrNo');
     anotherCalculation = READLINE.question();
   }
 
