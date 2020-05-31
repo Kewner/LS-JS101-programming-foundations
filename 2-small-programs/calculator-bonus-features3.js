@@ -87,11 +87,12 @@ while (calculateAgain) {
   let number2 = getNumber('askSecondNum');
   let operation = getOperation('whatOperation');
   let result = calculate(number1, number2, operation);
+
   console.log(`The result is: ${result}`);
 
   let anotherCalculation = newCalculation();
-
   console.clear();
+
   if (anotherCalculation === 'n') calculateAgain = false;
 }
 
