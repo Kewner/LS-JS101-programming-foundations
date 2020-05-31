@@ -60,6 +60,18 @@ function calculate(num1, num2, op) {
   return output;
 }
 
+function newCalculation() {
+  prompt('anotherCalculation');
+  let anotherCalculation = READLINE.question().toLowerCase();
+
+  while (anotherCalculation !== 'y' && anotherCalculation !== 'n') {
+    prompt('yesOrNo');
+    anotherCalculation = READLINE.question();
+  }
+
+  return anotherCalculation;
+}
+
 // PROGRAM CODE
 
 console.clear();
@@ -75,16 +87,9 @@ while (calculateAgain) {
   let number2 = getNumber('askSecondNum');
   let operation = getOperation('whatOperation');
   let result = calculate(number1, number2, operation);
-
   console.log(`The result is: ${result}`);
 
-  prompt('anotherCalculation');
-  let anotherCalculation = READLINE.question().toLowerCase();
-
-  while (anotherCalculation !== 'y' && anotherCalculation !== 'n') {
-    prompt('yesOrNo');
-    anotherCalculation = READLINE.question();
-  }
+  let anotherCalculation = newCalculation();
 
   console.clear();
   if (anotherCalculation === 'n') calculateAgain = false;
