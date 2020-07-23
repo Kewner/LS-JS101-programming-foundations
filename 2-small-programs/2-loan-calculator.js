@@ -1,59 +1,78 @@
-const RLSYNC = require('readline-sync');
+const rlsync = require('readline-sync');
+const messages = require('./2-loan-messages.json');
 
-function askInput(prompt) {
-  let answer = Number(RLSYNC.question(`=> ${prompt}\n`));
-
-  while (isNaN(answer) || answer < 0) {
-    answer = RLSYNC.question('Please enter a number of at least 0.\n');
+// function to print message from json
+function prompt(msg) {
+  if (messages[msg]) {
+    message = messages[msg];
+    console.log(`=> ${message}`)
+  } else {
+    console.log(`=> ${msg}`);
   }
-  return answer;
 }
 
-function askDurationInput(prompt) {
-  let answer = Number(RLSYNC.question(`=> ${prompt}\n`));
-
-  while (isNaN(answer) || answer <= 0) {
-    answer = RLSYNC.question('Please enter a number greater than 0.\n');
+// function to validate number input
+function validateInput(input) {
+  if (input.trim() === '') {
+    input = NaN;
+  } else {
+    input = Number(input);
   }
-  return answer;
+
+  while (isNaN(input) || input < 0) {
+    prompt('Please enter a positive number.');
+    input = validateInput(rlsync.question(''));
+  }
+  return input;
 }
 
+// function to calculate monthly payment
+function calculateMonthly(amount, rate, term) {
+  return amount * (rate / (1 - Math.pow((1 + rate), (-term))));
+}
+
+// main program
 while (true) {
   console.clear();
-  console.log('=> Welcome to Loan Calculator!');
+  prompt('welcome');
 
-  let monthlyPayment;
-  let loanAmount = askInput('What amount of money would you like to loan?');
-  let apr = askInput("What's the Annual Percentage Rate (in percents?)");
-  let monthlyRate = apr / 100 / 12;
-  let durationMonths = askDurationInput("What's the loan term (in" +
-                                         " months, at least 1)?");
+  prompt('getAmount');
+  let loanAmount = validateInput(rlsync.question(''));
+
+  prompt('getApr');
+  let monthlyRate = validateInput(rlsync.question('')) / 100 / 12;
+
+  prompt('getTerm');
+  let monthsTerm = validateInput(rlsync.question(''));
+
+  while (monthsTerm < 1) {
+    prompt('minimalDuration');
+    monthsTerm = validateInput(rlsync.question(''));
+  }
+
+  let monthlyPayment = calculateMonthly(loanAmount, monthlyRate, monthsTerm);
+  monthlyPayment = Number(monthlyPayment).toFixed(2);
 
   if (loanAmount === 0) {
-    monthlyPayment = loanAmount;
-    durationMonths = 0;
-  } else if (monthlyRate > 0) {
-    monthlyPayment = loanAmount *
-    (monthlyRate / (1 - Math.pow((1 + monthlyRate), (-durationMonths))));
+    prompt('noLoan');
   } else if (monthlyRate === 0) {
-    monthlyPayment = loanAmount / durationMonths;
+    monthlyPayment = loanAmount / monthsTerm;
+    prompt(`You will be paying $${monthlyPayment} each month for` +
+           ` ${monthsTerm} month(s).`);
+  } else {
+    prompt(`You will be paying $${monthlyPayment} each month for` +
+           ` ${monthsTerm} month(s).`);
   }
 
-  monthlyPayment = monthlyPayment.toFixed(2);
+  prompt('anotherCalculation');
+  let calculateAgain = rlsync.question('');
 
-  console.log(`=> Your monthly payment will be $${monthlyPayment}` +
-  ` for ${durationMonths} month(s).`);
-
-  console.log('=> Would you like to do another calculation? y/n');
-  let again = RLSYNC.question().toLowerCase();
-
-  while (again !== 'y' && again !== 'n') {
-    console.log("=> Please enter 'y' for yes or 'n' for no.");
-    again = RLSYNC.question().toLowerCase();
+  while (calculateAgain !== 'y' && calculateAgain !== 'n') {
+    prompt('answerCheck');
+    calculateAgain = rlsync.question('');
   }
 
-  if (again === 'n') {
-    console.log('=> Goodbye!');
-    break;
-  }
+  if (calculateAgain === 'n') break;
 }
+
+prompt('bye');
