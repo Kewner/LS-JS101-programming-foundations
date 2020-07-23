@@ -1,17 +1,14 @@
 const rlsync = require('readline-sync');
 const messages = require('./2-loan-messages.json');
 
-// function to print message from json
 function prompt(msg) {
   if (messages[msg]) {
-    let message = messages[msg];
-    console.log(`=> ${message}`);
+    console.log(`=> ${messages[msg]}`);
   } else {
     console.log(`=> ${msg}`);
   }
 }
 
-// function to validate number input
 function validateInput(input) {
   if (input.trim() === '') {
     input = NaN;
@@ -26,12 +23,10 @@ function validateInput(input) {
   return input;
 }
 
-// function to calculate monthly payment
 function calculateMonthly(amount, rate, term) {
   return amount * (rate / (1 - Math.pow((1 + rate), (-term))));
 }
 
-// main program
 while (true) {
   console.clear();
   prompt('welcome');
