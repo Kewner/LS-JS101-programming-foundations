@@ -4,8 +4,8 @@ const messages = require('./2-loan-messages.json');
 // function to print message from json
 function prompt(msg) {
   if (messages[msg]) {
-    message = messages[msg];
-    console.log(`=> ${message}`)
+    let message = messages[msg];
+    console.log(`=> ${message}`);
   } else {
     console.log(`=> ${msg}`);
   }
