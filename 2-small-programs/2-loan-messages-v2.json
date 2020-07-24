@@ -1,0 +1,13 @@
+{
+  "welcome" : "Welcome to Loan Calculator!",
+  "getAmount" : "What amount of money would you like to loan?",
+  "getApr" : "What's the Annual Percentage Rate (in percents)?",
+  "getTerm" : "What's the loan term (in months)?",
+  "minimalDuration" : "Please enter at least 1 month(s).",
+  "noLoan" : "No loan, no payments!",
+  "monthlyPayment" : "You will be paying $%s each month for %s month(s).",
+  "anotherCalculation" : "Would you like to do another calculation? y/n",
+  "answerCheck" : "Please enter 'y' or 'n'.",
+  "bye" : "Goodbye!"
+}
+
