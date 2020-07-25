@@ -1,5 +1,5 @@
 const RLSYNC = require('readline-sync');
-const MESSAGES = require('./2-loan-messages-v2.1.json');
+const MESSAGES = require('./2-loan-messages-v3.json');
 
 function prompt(msg, payment, term) {
   if (payment && term) {
@@ -65,11 +65,14 @@ while (true) {
   console.clear();
   prompt('welcome');
 
-  let loanAmount = retrieveInput('getAmount');
-  let monthlyRate = retrieveInput('getApr') / 100 / 12;
-  let monthsTerm = retrieveInput('getTerm');
-  let monthlyPayment = calculateMonthly(loanAmount, monthlyRate, monthsTerm);
+  let loanAmount = Number(retrieveInput('getAmount'));
+  let monthlyRate = Number(retrieveInput('getApr') / 100 / 12);
+  let monthsTerm = Number(retrieveInput('getTerm'));
+  let monthlyPayment =
+                Number(calculateMonthly(loanAmount, monthlyRate, monthsTerm));
+
   displayMonthlyPayment(loanAmount, monthlyRate, monthlyPayment, monthsTerm);
+
   let calculateAgain = retrieveInput('anotherCalculation');
 
   if (calculateAgain === 'n') break;
