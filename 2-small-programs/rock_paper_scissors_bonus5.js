@@ -1,5 +1,5 @@
 const readline = require('readline-sync');
-const MESSAGES = require('./rock_paper_scissors_bonus3_msgs.json');
+const MESSAGES = require('./rock_paper_scissors_bonus5.json');
 const VALID_CHOICES = ['rock', 'paper', 'scissors', 'spock', 'lizard'];
 
 let roundNumber = 1;
