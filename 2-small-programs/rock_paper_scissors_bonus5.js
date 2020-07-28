@@ -129,7 +129,7 @@ while (true) {
 
   roundNumber += 1;
 
-  // When the game is over: reset scores and round number, ask to play again
+  // Game over: reset scores and round number, ask to play again, clear console
   if (playerWins === 5 || computerWins === 5) {
     playerWins = 0;
     computerWins = 0;
