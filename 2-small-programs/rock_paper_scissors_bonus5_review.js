@@ -15,7 +15,8 @@ let score = { player: 0, computer: 0 };
 
 // Displays messages from json, takes arguments in case of template literals
 function prompt(msgKey, optionalArg1, optionalArg2 = '') {
-  if (optionalArg1 || optionalArg2) {
+  // if (optionalArg1 || optionalArg2) {
+  if (optionalArg1 >= 0 || optionalArg1) {
     console.log(`=> ${MESSAGES[msgKey]}`, optionalArg1, optionalArg2);
   } else {
     console.log(`=> ${MESSAGES[msgKey]}`);
