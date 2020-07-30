@@ -8,7 +8,7 @@ const WINNING_COMBOS = {
   scissors: ['paper', 'lizard'],
   lizard:   ['paper', 'spock'],
   spock:    ['rock', 'scissors'],
-}
+};
 
 let roundNumber = 1;
 let score = { player: 0, computer: 0 };
@@ -132,7 +132,7 @@ function isGameOver() {
 function resetGame() {
   score.player = 0;
   score.computer = 0;
-  roundNumber = 1;  
+  roundNumber = 1;
 }
 
 function playAgain() {
