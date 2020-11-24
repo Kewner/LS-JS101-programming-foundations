@@ -167,6 +167,11 @@ function detectWinner(board) {
 function displayWinner(winner, gameOrMatch) {
   gameOrMatch === 'game' ? prompt('gameWinner', winner) :
                            prompt('matchWinner', winner);
+  // if (gameOrMatch === 'game') {
+  //   prompt('gameWinner', winner);
+  // } else if (gameOrMatch === 'match') {
+  //   prompt('matchWinner', winner);
+  // }
 }
 
 function updateScore(score, winner) {
